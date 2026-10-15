@@ -1,0 +1,32 @@
+[package]
+name = "xdg-portal-niri"
+version = "0.1.0"
+edition = "2021"
+description = "A lightweight XDG Desktop Portal backend for niri"
+license = "MIT"
+repository = "https://github.com/melechtna/xdg-portal-niri"
+
+[[bin]]
+name = "xdg-portal-niri"
+path = "src/main.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time"] }
+futures-util = "0.3"
+async-channel = "2"
+zbus = { version = "5", default-features = false, features = ["tokio"] }
+niri-ipc = "26.4"
+pipewire = "0.10"
+gtk = { package = "gtk4", version = "0.11", features = ["v4_12"] }
+libadwaita = { version = "0.9", features = ["v1_4"] }
+glib = "0.22"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[build-dependencies]
+glib-build-tools = "0.22"
+
+[profile.release]
+lto = "thin"
+strip = true

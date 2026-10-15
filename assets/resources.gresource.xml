@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/dev/melechtna/XdgPortalNiri">
+    <file>icons/scalable/actions/fa-display-symbolic.svg</file>
+    <file>icons/scalable/actions/fa-window-maximize-symbolic.svg</file>
+  </gresource>
+</gresources>

@@ -1,0 +1,20 @@
+[Unit]
+Description=XDG Desktop Portal backend for niri
+Documentation=https://github.com/melechtna/xdg-portal-niri
+# The portal frontend activates this on demand over D-Bus, but we also want it
+# right there when the session comes up so the first screen share is instant.
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.impl.portal.desktop.niriportal
+# `just install` puts the binary here. systemd has no notion of a working
+# directory for the path itself, so this has to be absolute; `%h` is its
+# specifier for the home directory, which avoids templating this file.
+ExecStart=%h/.local/share/xdg-portal-niri/xdg-portal-niri
+Restart=on-failure
+RestartSec=1
+
+[Install]
+WantedBy=graphical-session.target
